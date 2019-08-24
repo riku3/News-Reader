@@ -26,71 +26,47 @@ class ListViewController: UITableViewController, XMLParserDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsCell
         
-        cell.newsTitle.text = items[indexPath.row].title
-        cell.newsImage!.contentMode = .scaleAspectFill
-
+        if cell.newsTitle.text != items[indexPath.row].title {
+            cell.newsTitle.text = items[indexPath.row].title
+        }
+        if cell.newsImage.image == nil {
+            cell.newsImage.image = UIImage(named: "defaultImage")
+        }
         
-//        var imageURL = URL(string: "https://placehold.jp/150x150.png")
-//        cell.newsImage.sd_setImage(with: imageURL)
-        cell.newsImage.image = UIImage(named: "defaultImage")
-        
-        Alamofire.request(items[indexPath.row].link, method: .get).responseString { response in
-            if response.result.isFailure {
-                print(response.result.error!)
-                return
+        if items[indexPath.row].site_name != nil || items[indexPath.row].newsImage != nil {
+            cell.siteName.text = items[indexPath.row].site_name
+            cell.newsImage.sd_setImage(with: items[indexPath.row].newsImage)
+        } else {
+            
+            //セルが再利用される場合の初期化 //TODO:サイト名も初期化する
+            cell.newsImage.image = UIImage(named: "defaultImage")
+            
+            Alamofire.request(items[indexPath.row].link, method: .get).responseString { response in
+                if response.result.isFailure {
+                    print(response.result.error!)
+                    return
+                }
+                
+                let html = HTMLDocument(string: response.result.value!)
+                let ogTags:[HTMLElement] = html.nodes(matchingSelector: "meta[property^=\"og:\"]")
+                var dict = Dictionary<String, String>()
+                
+                ogTags.forEach {
+                    let property = $0.attributes["property"]!
+                    let content = $0.attributes["content"]!
+                    dict[property] = content
+                }
+                
+                cell.siteName.text = dict["og:site_name"]
+                cell.newsImage.sd_setImage(with: URL(string: dict["og:image"]!)!)
+                
+                //TODO サイト名、画像が取得できない場合にエラーとなるため対応必須
+                self.items[indexPath.row].site_name = dict["og:site_name"]
+                self.items[indexPath.row].newsImage = URL(string: dict["og:image"]!)!
             }
-            
-            let html = HTMLDocument(string: response.result.value!)
-            let ogTags:[HTMLElement] = html.nodes(matchingSelector: "meta[property^=\"og:\"]")
-            var dict = Dictionary<String, String>()
-            
-            ogTags.forEach {
-                let property = $0.attributes["property"]!
-                let content = $0.attributes["content"]!
-                dict[property] = content
-            }
-            
-            cell.siteName.text = dict["og:site_name"]
-            cell.newsImage.sd_setImage(with: URL(string: dict["og:image"]!))
         }
         return cell
     }
-    
-//    func getImageUrl(_ url: String) -> URL {
-//        //ロックの取得
-////        var keepAlive = true
-//
-//        var imageURL = URL(string: "https://placehold.jp/150x150.png")
-//        Alamofire.request(url, method: .get).responseString { response in
-//            if response.result.isFailure {
-//                print(response.result.error!)
-////                keepAlive = false
-//                return
-//
-//            }
-//
-//            let html = HTMLDocument(string: response.result.value!)
-//
-//            let ogTags:[HTMLElement] = html.nodes(matchingSelector: "meta[property^=\"og:image\"]")
-//
-//            var dict = Dictionary<String, String>()
-//            ogTags.forEach {
-//                let property = $0.attributes["property"]!
-//                let content = $0.attributes["content"]!
-//                dict[property] = content
-//            }
-//            imageURL = URL(string: dict["og:image"]!)
-////            self.tableView.reloadData()
-////            keepAlive = false
-//        }
-//        //ロックが解除されるまで待つ
-////        let runLoop = RunLoop.current
-////        while keepAlive &&
-////            runLoop.run(mode: RunLoop.Mode.default, before: NSDate(timeIntervalSinceNow: 0.1) as Date) {
-////                // 0.1秒毎の処理なので、処理が止まらない
-////        }
-//        return imageURL!
-//    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -175,16 +151,3 @@ class ListViewController: UITableViewController, XMLParserDelegate {
         }
     }
 }
-//extension UIImageView {
-//    func loadWebImage(url:NSURL!){
-//        self.sd_setImageWithURL(url)
-//    }
-//
-//    func loadWebImage(url:NSURL!, placeholderImage:UIImage!) {
-//        self.sd_setImageWithURL(url, placeholderImage: placeholderImage)
-//    }
-//
-//    func loadWebImage(url:NSURL!, placeholderImage:UIImage!,completeion:SDWebImageCompletionBlock){
-//        self.sd_setImageWithURL(url, placeholderImage: placeholderImage, completed: completeion)
-//    }
-//}

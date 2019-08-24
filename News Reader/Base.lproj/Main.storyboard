@@ -33,7 +33,7 @@
                                                 <constraint firstAttribute="width" constant="150" id="dRe-A1-MI5"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="記事のタイトル" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="201.99999999999994" translatesAutoresizingMaskIntoConstraints="NO" id="4W0-wE-nXm">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="201.99999999999994" translatesAutoresizingMaskIntoConstraints="NO" id="4W0-wE-nXm">
                                             <rect key="frame" x="16" y="13" width="194" height="72"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>

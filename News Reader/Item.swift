@@ -11,4 +11,6 @@ import Foundation
 class Item {
     var title = ""
     var link = ""
+    var site_name:String?
+    var newsImage:URL?
 }
