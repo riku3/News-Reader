@@ -1,0 +1,26 @@
+PODS:
+  - Alamofire (4.8.2)
+  - HTMLReader (2.1.4)
+  - SDWebImage (5.1.0):
+    - SDWebImage/Core (= 5.1.0)
+  - SDWebImage/Core (5.1.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - HTMLReader
+  - SDWebImage
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - HTMLReader
+    - SDWebImage
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  HTMLReader: 2fc5ccf6a041b7070d9b43b101034cba63d2ae2a
+  SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
+
+PODFILE CHECKSUM: b98abf6970be8e7d5c9409ae307e8249c6402e8c
+
+COCOAPODS: 1.7.5
