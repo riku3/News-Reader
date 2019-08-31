@@ -36,12 +36,19 @@ class ListViewController: UITableViewController, XMLParserDelegate {
             cell.newsImage.image = UIImage(named: "defaultImage")
         }
         
-        if items[indexPath.row].site_name != nil || items[indexPath.row].newsImage != nil {
+        //image_nameはhttps://以外のURLの場合はnilとするため条件に含めない
+        if items[indexPath.row].site_name != nil {
             //一度セルを利用している場合(セルを生成する際にサイト名と画像を設定している)
             
             //itemクラスで設定したサイト名と画像を設定
             cell.siteName.text = items[indexPath.row].site_name
-            cell.newsImage.sd_setImage(with: items[indexPath.row].newsImage)
+            if items[indexPath.row].newsImage != nil {
+                //image_nameはhttps://以外のURLの場合はnilとなるため、取得できる場合のみ設定
+                cell.newsImage.sd_setImage(with: items[indexPath.row].newsImage)
+            } else {
+                //image_nameはhttps://以外のURLの場合はnilとなるため、取得できない場合デフォルト画像を設定
+                cell.newsImage.image = UIImage(named: "defaultImage")
+            }
         } else {
             //新しくセルを利用する場合
             
@@ -69,14 +76,19 @@ class ListViewController: UITableViewController, XMLParserDelegate {
                     dict[property] = content
                 }
                 
-                //取得してきたサイト名と画像をセルに設定
+                //取得してきたサイト名をセルに設定
                 cell.siteName.text = dict["og:site_name"]
-                cell.newsImage.sd_setImage(with: URL(string: dict["og:image"]!)!)
                 
                 //TODO：サイト名、画像が取得できない場合にエラーとなるため対応必須
-                //API処理をもう一度しないように、itemクラスのサイト名と画像を設定
+                //API処理をもう一度しないように、itemクラスのサイト名を設定
                 self.items[indexPath.row].site_name = dict["og:site_name"]
-                self.items[indexPath.row].newsImage = URL(string: dict["og:image"]!)!
+                //imageURLをhttps://に限定する(他の場合だと画像を読み込めない場合があるため)
+                if (dict["og:image"]?.range(of: "https://")) != nil {
+                    //取得してきた画像をセルに設定
+                    cell.newsImage.sd_setImage(with: URL(string: dict["og:image"]!)!)
+                    //API処理をもう一度しないように、itemクラスの画像を設定
+                    self.items[indexPath.row].newsImage = URL(string: dict["og:image"]!)!
+                }
             }
         }
         return cell
@@ -99,13 +111,13 @@ class ListViewController: UITableViewController, XMLParserDelegate {
                 self.parser.parse()
             }
         }
-//        if let url = URL(string: "https://micki-pedia.com/feed/") {
-//            if let parser = XMLParser(contentsOf: url) {
-//                self.parser = parser
-//                self.parser.delegate = self
-//                self.parser.parse()
-//            }
-//        }
+        if let url = URL(string: "https://micki-pedia.com/feed/") {
+            if let parser = XMLParser(contentsOf: url) {
+                self.parser = parser
+                self.parser.delegate = self
+                self.parser.parse()
+            }
+        }
 //        if let url = URL(string: "https://bouldering-club.com/feed/") {
 //            if let parser = XMLParser(contentsOf: url) {
 //                self.parser = parser
