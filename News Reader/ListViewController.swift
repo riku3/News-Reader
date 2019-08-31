@@ -36,17 +36,17 @@ class ListViewController: UITableViewController, XMLParserDelegate {
             cell.newsImage.image = UIImage(named: "defaultImage")
         }
         
-        //image_nameはhttps://以外のURLの場合はnilとするため条件に含めない
+        //image_nameはhttp以外のURLの場合はnilとするため条件に含めない
         if items[indexPath.row].site_name != nil {
             //一度セルを利用している場合(セルを生成する際にサイト名と画像を設定している)
             
             //itemクラスで設定したサイト名と画像を設定
             cell.siteName.text = items[indexPath.row].site_name
             if items[indexPath.row].newsImage != nil {
-                //image_nameはhttps://以外のURLの場合はnilとなるため、取得できる場合のみ設定
+                //image_nameはhttp以外のURLの場合はnilとなるため、取得できる場合のみ設定
                 cell.newsImage.sd_setImage(with: items[indexPath.row].newsImage)
             } else {
-                //image_nameはhttps://以外のURLの場合はnilとなるため、取得できない場合デフォルト画像を設定
+                //image_nameはhttp以外のURLの場合はnilとなるため、取得できない場合デフォルト画像を設定
                 cell.newsImage.image = UIImage(named: "defaultImage")
             }
         } else {
@@ -82,8 +82,8 @@ class ListViewController: UITableViewController, XMLParserDelegate {
                 //TODO：サイト名、画像が取得できない場合にエラーとなるため対応必須
                 //API処理をもう一度しないように、itemクラスのサイト名を設定
                 self.items[indexPath.row].site_name = dict["og:site_name"]
-                //imageURLをhttps://に限定する(他の場合だと画像を読み込めない場合があるため)
-                if (dict["og:image"]?.range(of: "https://")) != nil {
+                //imageURLをhttpに限定する(他の場合だと画像を読み込めない場合があるため)
+                if (dict["og:image"]?.range(of: "http")) != nil {
                     //取得してきた画像をセルに設定
                     cell.newsImage.sd_setImage(with: URL(string: dict["og:image"]!)!)
                     //API処理をもう一度しないように、itemクラスの画像を設定
@@ -104,6 +104,7 @@ class ListViewController: UITableViewController, XMLParserDelegate {
     //RSSデータのダウンロード
     func startDownload() {
         self.items = []
+        //山と溪谷社のクライミング・ボルダリング総合サイト CLIMBING-net クライミングネット
         if let url = URL(string: "https://www.climbing-net.com/feed/") {
             if let parser = XMLParser(contentsOf: url) {
                 self.parser = parser
@@ -111,6 +112,7 @@ class ListViewController: UITableViewController, XMLParserDelegate {
                 self.parser.parse()
             }
         }
+        //Mickipedia - ミキペディア｜クライミングをもっと考えたい全ての人へ
         if let url = URL(string: "https://micki-pedia.com/feed/") {
             if let parser = XMLParser(contentsOf: url) {
                 self.parser = parser
@@ -118,27 +120,38 @@ class ListViewController: UITableViewController, XMLParserDelegate {
                 self.parser.parse()
             }
         }
-//        if let url = URL(string: "https://bouldering-club.com/feed/") {
-//            if let parser = XMLParser(contentsOf: url) {
-//                self.parser = parser
-//                self.parser.delegate = self
-//                self.parser.parse()
-//            }
-//        }
-//        if let url = URL(string: "http://bouldering-style.com/feed//") {
-//            if let parser = XMLParser(contentsOf: url) {
-//                self.parser = parser
-//                self.parser.delegate = self
-//                self.parser.parse()
-//            }
-//        }
-//        if let url = URL(string: "https://climbers-web.jp/feed/") {
-//            if let parser = XMLParser(contentsOf: url) {
-//                self.parser = parser
-//                self.parser.delegate = self
-//                self.parser.parse()
-//            }
-//        }
+        //クライマーズ公式サイト｜CLIMBERSはクライミング、ボルダリングをテーマにした総合WEBサイト
+        if let url = URL(string: "https://climbers-web.jp/feed/") {
+            if let parser = XMLParser(contentsOf: url) {
+                self.parser = parser
+                self.parser.delegate = self
+                self.parser.parse()
+            }
+        }
+        //ALLEZ〜ボルダリング上達応援ブログ&No. 1サイト
+        if let url = URL(string: "https://chums.jp.net/feed/") {
+            if let parser = XMLParser(contentsOf: url) {
+                self.parser = parser
+                self.parser.delegate = self
+                self.parser.parse()
+            }
+        }
+        //クライマニア
+        if let url = URL(string: "http://climb-mania.com/feed/") {
+            if let parser = XMLParser(contentsOf: url) {
+                self.parser = parser
+                self.parser.delegate = self
+                self.parser.parse()
+            }
+        }
+        //Climbing.UP
+        if let url = URL(string: "https://climbingup2.net/feed/") {
+            if let parser = XMLParser(contentsOf: url) {
+                self.parser = parser
+                self.parser.delegate = self
+                self.parser.parse()
+            }
+        }
     }
     
     //要素名(elementName)の開始たタグが見つかる毎に呼び出されるメソッド

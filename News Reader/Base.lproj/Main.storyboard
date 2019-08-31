@@ -33,14 +33,22 @@
                                                 <constraint firstAttribute="width" constant="150" id="dRe-A1-MI5"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="201.99999999999994" translatesAutoresizingMaskIntoConstraints="NO" id="4W0-wE-nXm">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="201.99999999999994" translatesAutoresizingMaskIntoConstraints="NO" id="4W0-wE-nXm">
                                             <rect key="frame" x="16" y="13" width="194" height="72"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="72" id="WAv-wH-b36"/>
+                                                <constraint firstAttribute="width" constant="194" id="XTe-po-T0u"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwy-zv-fBr">
-                                            <rect key="frame" x="16" y="85" width="194" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwy-zv-fBr">
+                                            <rect key="frame" x="16" y="85" width="194" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="194" id="DH9-f8-sax"/>
+                                                <constraint firstAttribute="height" constant="28" id="tpc-mG-qhc"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
