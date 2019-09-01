@@ -173,6 +173,8 @@ class ListViewController: UITableViewController, XMLParserDelegate {
             self.item?.title = currentString
         case "link":
             self.item?.link = currentString
+        case "pubDate":
+            self.item?.pubDate = currentString
         case "item":
             self.items.append(self.item!)
         default:
@@ -182,6 +184,19 @@ class ListViewController: UITableViewController, XMLParserDelegate {
     
     //全てのRSSデータの解析が終了した時に呼び出されるメソッド
     func parserDidEndDocument(_ parser: XMLParser) {
+        
+        //TODO:コードを綺麗に整形する dateFormatter.localを使う必要があるか？
+        //pubDateの降順に設定
+        items = items.sorted(by: { (a, b) -> Bool in
+                let dateFormatter = DateFormatter()
+                // 書式が変わらない固定ロケールで一度値を取得
+                dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale
+                dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss ZZZZ"
+                
+                let a_date = dateFormatter.date(from: a.pubDate)
+                let b_date = dateFormatter.date(from: b.pubDate)
+            return a_date! > b_date!
+        })
         self.tableView.reloadData()
     }
     

@@ -13,4 +13,5 @@ class Item {
     var link = ""
     var site_name:String?
     var newsImage:URL?
+    var pubDate = ""
 }
