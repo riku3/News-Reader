@@ -22,4 +22,14 @@ class DetailViewController: UIViewController {
             self.webView.load(request)
         }
     }
+    // シェアボタン
+    @IBAction func shareButton(_ sender: UIBarButtonItem) {
+        let activityItems: Array<String> = [self.link]
+        
+        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    
 }

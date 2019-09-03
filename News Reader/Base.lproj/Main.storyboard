@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KJE-Za-hMV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bQa-Sg-KEc">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--一覧-->
+        <!--記事-->
         <scene sceneID="sK7-u7-NPD">
             <objects>
                 <tableViewController id="2qY-0C-u2C" customClass="ListViewController" customModule="News_Reader" customModuleProvider="target" sceneMemberID="viewController">
@@ -80,13 +80,13 @@
                             <outlet property="delegate" destination="2qY-0C-u2C" id="nDQ-FV-pBr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="一覧" id="m8H-60-mQj"/>
+                    <navigationItem key="navigationItem" title="記事" id="MFB-bM-Gub"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F8Q-Bk-91O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="778.39999999999998" y="121.92118226600985"/>
+            <point key="canvasLocation" x="1720.8" y="121.92118226600985"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--サイト名-->
         <scene sceneID="554-Yw-ZCM">
             <objects>
                 <viewController id="ZCh-iO-u0B" customClass="DetailViewController" customModule="News_Reader" customModuleProvider="target" sceneMemberID="viewController">
@@ -94,8 +94,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2VW-gM-SHO">
-                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2VW-gM-SHO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -104,39 +105,40 @@
                             </wkWebView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="2VW-gM-SHO" firstAttribute="top" secondItem="AIX-nL-vgE" secondAttribute="top" id="8eI-eS-8HA"/>
-                            <constraint firstAttribute="bottom" secondItem="2VW-gM-SHO" secondAttribute="bottom" id="QId-ak-Aho"/>
-                            <constraint firstAttribute="trailing" secondItem="2VW-gM-SHO" secondAttribute="trailing" id="eST-Bi-CLy"/>
-                            <constraint firstItem="2VW-gM-SHO" firstAttribute="leading" secondItem="Ym0-pz-Ubu" secondAttribute="leading" id="lOQ-lZ-m9y"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="AIX-nL-vgE"/>
                     </view>
+                    <navigationItem key="navigationItem" title="サイト名" id="Df1-3e-2ab">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="I8n-t8-9d4">
+                            <connections>
+                                <action selector="shareButton:" destination="ZCh-iO-u0B" id="lDO-v8-zHB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="webView" destination="2VW-gM-SHO" id="rIB-vZ-aJM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rAw-Qh-EfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660" y="121.92118226600985"/>
+            <point key="canvasLocation" x="2602.4000000000001" y="121.92118226600985"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="UST-N9-V6G">
+        <scene sceneID="FFv-32-u5t">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KJE-Za-hMV" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bQa-Sg-KEc" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NK9-gE-GZE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Mrx-dg-qBB">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="2qY-0C-u2C" kind="relationship" relationship="rootViewController" id="wNo-el-Zr3"/>
+                        <segue destination="2qY-0C-u2C" kind="relationship" relationship="rootViewController" id="5Nc-Zh-G43"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="l1P-TL-UJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LBM-Ga-GyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-164" y="121.92118226600985"/>
+            <point key="canvasLocation" x="778.39999999999998" y="121.92118226600985"/>
         </scene>
     </scenes>
 </document>

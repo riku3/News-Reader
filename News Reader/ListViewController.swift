@@ -18,6 +18,7 @@ class ListViewController: UITableViewController, XMLParserDelegate {
     var items = [Item]()
     var item :Item?
     var currentString = ""
+    private var firstAppear: Bool = false
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
@@ -93,12 +94,15 @@ class ListViewController: UITableViewController, XMLParserDelegate {
         }
         return cell
     }
-    
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.tableView.estimatedRowHeight = 100
-        self.tableView.rowHeight = UITableView.automaticDimension
-        startDownload()
+        // 一度だけ表示する
+        if !firstAppear {
+            super.viewDidAppear(animated)
+            self.tableView.estimatedRowHeight = 100
+            self.tableView.rowHeight = UITableView.automaticDimension
+            startDownload()
+            firstAppear = true
+        }
     }
     
     //RSSデータのダウンロード
@@ -205,7 +209,7 @@ class ListViewController: UITableViewController, XMLParserDelegate {
         if let indexPath = self.tableView.indexPathForSelectedRow {
             let item = items[indexPath.row]
             let controller = segue.destination as! DetailViewController
-            controller.title = item.title
+            controller.title = item.site_name
             controller.link = item.link
         }
     }
