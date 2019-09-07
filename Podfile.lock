@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.8.2)
   - HTMLReader (2.1.4)
+  - PagingMenuController (2.2.0)
   - SDWebImage (5.1.0):
     - SDWebImage/Core (= 5.1.0)
   - SDWebImage/Core (5.1.0)
@@ -8,19 +9,22 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - HTMLReader
+  - PagingMenuController
   - SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - HTMLReader
+    - PagingMenuController
     - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   HTMLReader: 2fc5ccf6a041b7070d9b43b101034cba63d2ae2a
+  PagingMenuController: 6176618987bb170096664f2da097313e45ed9c31
   SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
 
-PODFILE CHECKSUM: b98abf6970be8e7d5c9409ae307e8249c6402e8c
+PODFILE CHECKSUM: 1f320da1e98526413417ceff160313aaa8a241a6
 
 COCOAPODS: 1.7.5

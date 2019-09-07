@@ -9,6 +9,7 @@ target 'News Reader' do
  pod 'SDWebImage'
  pod 'Alamofire'
  pod 'HTMLReader'
+ pod 'PagingMenuController'
 
   target 'News ReaderTests' do
     inherit! :search_paths

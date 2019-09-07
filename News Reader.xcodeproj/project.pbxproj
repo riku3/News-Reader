@@ -20,6 +20,9 @@
 		3253E55F2304080000DEEA44 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3253E55E2304080000DEEA44 /* WebKit.framework */; };
 		3253E5612304082700DEEA44 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3253E5602304082700DEEA44 /* DetailViewController.swift */; };
 		3253E56323041B3B00DEEA44 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3253E56223041B3B00DEEA44 /* NewsCell.swift */; };
+		3258DAD52323338200AE2A7F /* PageMenuViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DAD42323338200AE2A7F /* PageMenuViewController1.swift */; };
+		3258DAD72323339900AE2A7F /* PageMenuViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DAD62323339900AE2A7F /* PageMenuViewController2.swift */; };
+		3258DAD9232333A800AE2A7F /* PageMenuViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258DAD8232333A800AE2A7F /* PageMenuViewController3.swift */; };
 		9D0F13889CE9328C59D06CBF /* Pods_News_ReaderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE710E839E558A3E2FED3EB /* Pods_News_ReaderTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +64,9 @@
 		3253E55E2304080000DEEA44 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		3253E5602304082700DEEA44 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3253E56223041B3B00DEEA44 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		3258DAD42323338200AE2A7F /* PageMenuViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageMenuViewController1.swift; sourceTree = "<group>"; };
+		3258DAD62323339900AE2A7F /* PageMenuViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageMenuViewController2.swift; sourceTree = "<group>"; };
+		3258DAD8232333A800AE2A7F /* PageMenuViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageMenuViewController3.swift; sourceTree = "<group>"; };
 		4D7DD16226F2A93E08B75034 /* Pods-News ReaderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News ReaderUITests.debug.xcconfig"; path = "Target Support Files/Pods-News ReaderUITests/Pods-News ReaderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		58D0295A3672A64640909A38 /* Pods-News Reader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News Reader.release.xcconfig"; path = "Target Support Files/Pods-News Reader/Pods-News Reader.release.xcconfig"; sourceTree = "<group>"; };
 		81C3902DEDB02341EF8B243E /* Pods_News_ReaderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_News_ReaderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +138,9 @@
 				3253E5322303F25700DEEA44 /* Assets.xcassets */,
 				3253E5372303F25700DEEA44 /* Info.plist */,
 				3253E56223041B3B00DEEA44 /* NewsCell.swift */,
+				3258DAD42323338200AE2A7F /* PageMenuViewController1.swift */,
+				3258DAD62323339900AE2A7F /* PageMenuViewController2.swift */,
+				3258DAD8232333A800AE2A7F /* PageMenuViewController3.swift */,
 			);
 			path = "News Reader";
 			sourceTree = "<group>";
@@ -400,7 +409,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3253E52C2303F25600DEEA44 /* AppDelegate.swift in Sources */,
+				3258DAD72323339900AE2A7F /* PageMenuViewController2.swift in Sources */,
 				3253E55C2303F6B400DEEA44 /* Item.swift in Sources */,
+				3258DAD52323338200AE2A7F /* PageMenuViewController1.swift in Sources */,
+				3258DAD9232333A800AE2A7F /* PageMenuViewController3.swift in Sources */,
 				3253E55A2303F2A400DEEA44 /* ListViewController.swift in Sources */,
 				3253E5612304082700DEEA44 /* DetailViewController.swift in Sources */,
 				3253E56323041B3B00DEEA44 /* NewsCell.swift in Sources */,
