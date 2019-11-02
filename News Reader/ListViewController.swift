@@ -1,20 +1,52 @@
 import UIKit
+import Alamofire
+import SDWebImage
 import PagingMenuController
 
 class ListViewController: UIViewController {
     
+    static var articles1: Array<Article> = []
+    static var articles2: Array<Article> = []
+    static var articles3: Array<Article> = []
+    
+    struct Article:Codable {
+        var title: String
+        var link: String
+        var site_name: String
+        var image: String
+        var pub_date: String
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let options = PagingMenuOptions()
-        let pagingMenuController = PagingMenuController(options: options)
-        
-        pagingMenuController.view.frame.origin.y += 50
-        pagingMenuController.view.frame.size.height -= 50
-        
-        addChild(pagingMenuController)
-        view.addSubview(pagingMenuController.view)
-        pagingMenuController.didMove(toParent: self)
+        Alamofire.request("https://q0jxf9yhbi.execute-api.ap-northeast-1.amazonaws.com/prod/articles", method: .get).responseJSON { response in
+            switch response.result {
+               case .success:
+                   let articles = try! JSONDecoder().decode([Article].self, from: response.data!)
+                   for article in articles {
+                    let siteName = article.site_name
+                    if siteName.contains("山と溪谷社のクライミング") || siteName.contains("CLIMBERS") {
+                        ListViewController.articles1.append(article)
+                    } else if siteName.contains("Mickipedia") || siteName.contains("ALLEZ") {
+                        ListViewController.articles2.append(article)
+                    } else {
+                        ListViewController.articles3.append(article)
+                    }
+                }
+                   let options = PagingMenuOptions()
+                   let pagingMenuController = PagingMenuController(options: options)
+                   
+                   pagingMenuController.view.frame.origin.y += 50
+                   pagingMenuController.view.frame.size.height -= 50
+                   
+                   self.addChild(pagingMenuController)
+                   self.view.addSubview(pagingMenuController.view)
+                   pagingMenuController.didMove(toParent: self)
+               case .failure:
+                   return
+            }
+        }
     }
 }
 
@@ -44,17 +76,17 @@ private struct PagingMenuOptions: PagingMenuControllerCustomizable {
     
     fileprivate struct MenuItem1: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
-            return .text(title: MenuItemText(text: "First Menu"))
+            return .text(title: MenuItemText(text: "News"))
         }
     }
     fileprivate struct MenuItem2: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
-            return .text(title: MenuItemText(text: "Second Menu"))
+            return .text(title: MenuItemText(text: "Blog1"))
         }
     }
     fileprivate struct MenuItem3: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
-            return .text(title: MenuItemText(text: "Third Menu"))
+            return .text(title: MenuItemText(text: "Blog2"))
         }
     }
 }

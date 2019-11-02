@@ -16,7 +16,6 @@
 		3253E5412303F25700DEEA44 /* News_ReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3253E5402303F25700DEEA44 /* News_ReaderTests.swift */; };
 		3253E54C2303F25700DEEA44 /* News_ReaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3253E54B2303F25700DEEA44 /* News_ReaderUITests.swift */; };
 		3253E55A2303F2A400DEEA44 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3253E5592303F2A400DEEA44 /* ListViewController.swift */; };
-		3253E55C2303F6B400DEEA44 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3253E55B2303F6B400DEEA44 /* Item.swift */; };
 		3253E55F2304080000DEEA44 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3253E55E2304080000DEEA44 /* WebKit.framework */; };
 		3253E5612304082700DEEA44 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3253E5602304082700DEEA44 /* DetailViewController.swift */; };
 		3253E56323041B3B00DEEA44 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3253E56223041B3B00DEEA44 /* NewsCell.swift */; };
@@ -60,7 +59,6 @@
 		3253E54B2303F25700DEEA44 /* News_ReaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News_ReaderUITests.swift; sourceTree = "<group>"; };
 		3253E54D2303F25700DEEA44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3253E5592303F2A400DEEA44 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		3253E55B2303F6B400DEEA44 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3253E55E2304080000DEEA44 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		3253E5602304082700DEEA44 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3253E56223041B3B00DEEA44 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 				3253E5592303F2A400DEEA44 /* ListViewController.swift */,
 				3253E5602304082700DEEA44 /* DetailViewController.swift */,
 				3253E52F2303F25600DEEA44 /* Main.storyboard */,
-				3253E55B2303F6B400DEEA44 /* Item.swift */,
 				3253E5322303F25700DEEA44 /* Assets.xcassets */,
 				3253E5372303F25700DEEA44 /* Info.plist */,
 				3253E56223041B3B00DEEA44 /* NewsCell.swift */,
@@ -411,7 +408,6 @@
 				3253E52C2303F25600DEEA44 /* AppDelegate.swift in Sources */,
 				3258DAD72323339900AE2A7F /* PageMenuViewController2.swift in Sources */,
 				32735344234E2A62007AE03A /* PageMenuViewController1.swift in Sources */,
-				3253E55C2303F6B400DEEA44 /* Item.swift in Sources */,
 				3258DAD9232333A800AE2A7F /* PageMenuViewController3.swift in Sources */,
 				3253E55A2303F2A400DEEA44 /* ListViewController.swift in Sources */,
 				3253E5612304082700DEEA44 /* DetailViewController.swift in Sources */,
